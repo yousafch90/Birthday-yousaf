@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Yousaf 🎂</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    font-family: Arial, sans-serif;
+    background: #050510;
+    color: white;
+    overflow-x: hidden;
+}
+
+body {
+    min-height: 100vh;
+}
+
+/* Animated background */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,0,128,.25), transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(0,200,255,.20), transparent 30%),
+        radial-gradient(circle at 50% 80%, rgba(140,0,255,.25), transparent 30%);
+    animation: backgroundMove 8s infinite alternate;
+    z-index: -2;
+}
+
+@keyframes backgroundMove {
+    from { transform: scale(1); }
+    to { transform: scale(1.2); }
+}
+
+/* Stars */
+.star {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes twinkle {
+    from { opacity: .2; transform: scale(.5); }
+    to { opacity: 1; transform: scale(1.5); }
+}
+
+/* Intro */
+#intro {
+    position: fixed;
+    inset: 0;
+    background: #050510;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    text-align: center;
+    transition: 1s;
+}
+
+.intro-content {
+    padding: 25px;
+}
+
+.intro-content h1 {
+    font-size: clamp(35px, 9vw, 80px);
+    background: linear-gradient(90deg,#ff4ecd,#00eaff,#ffe600);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { filter: drop-shadow(0 0 5px #ff00cc); }
+    to { filter: drop-shadow(0 0 30px #00eaff); }
+}
+
+.start-btn,
+.surprise-btn {
+    border: none;
+    padding: 16px 30px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(90deg,#ff0080,#7928ff,#00c6ff);
+    cursor: pointer;
+    box-shadow: 0 0 25px rgba(255,0,180,.5);
+    transition: .3s;
+}
+
+.start-btn:hover,
+.surprise-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 45px rgba(0,220,255,.8);
+}
+
+/* Main */
+#main {
+    display: none;
+    min-height: 100vh;
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 18px;
+    border: 1px solid rgba(255,255,255,.3);
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    font-size: 13px;
+    letter-spacing: 3px;
+}
+
+h2 {
+    font-size: clamp(45px, 12vw, 100px);
+    margin: 25px 0 10px;
+    background: linear-gradient(90deg,#ff4ecd,#ffe600,#00eaff);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.subtitle {
+    font-size: 20px;
+    opacity: .8;
+}
+
+/* Glass card */
+.card {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 35px 25px;
+    border-radius: 30px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.18);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 25px 80px rgba(0,0,0,.4);
+}
+
+.card h3 {
+    font-size: 30px;
+}
+
+.wish {
+    font-size: 20px;
+    line-height: 1.7;
+    opacity: .9;
+}
+
+/* Cake */
+.cake {
+    font-size: 110px;
+    margin: 25px;
+    animation: cakeFloat 3s ease-in-out infinite;
+}
+
+@keyframes cakeFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Surprise */
+#surprise {
+    display: none;
+    margin-top: 30px;
+    animation: reveal 1s ease;
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: scale(.7) rotateX(30deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotateX(0);
+    }
+}
+
+.secret {
+    font-size: 25px;
+    line-height: 1.6;
+    color: #ffe86b;
+}
+
+/* Wishes */
+.wishes {
+    max-width: 1000px;
+    margin: 60px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 20px;
+}
+
+.wish-card {
+    padding: 25px;
+    border-radius: 25px;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.12);
+    backdrop-filter: blur(15px);
+    transition: .4s;
+}
+
+.wish-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 50px rgba(0,200,255,.2);
+}
+
+.wish-card .emoji {
+    font-size: 45px;
+}
+
+/* Footer */
+footer {
+    margin-top: 70px;
+    opacity: .5;
+}
+
+/* Confetti */
+.confetti {
+    position: fixed;
+    top: -20px;
+    width: 10px;
+    height: 18px;
+    z-index: 999;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+    }
+}
+
+/* Fireworks */
+.firework {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+    from {
+        box-shadow: 0 0 0 0 white;
+        opacity: 1;
+    }
+    to {
+        box-shadow:
+        0 -80px #ff0080,
+        60px -60px #00eaff,
+        80px 0 #ffe600,
+        60px 60px #7d2cff,
+        0 80px #00ff88,
+        -60px 60px #ff4ecd,
+        -80px 0 #00eaff,
+        -60px -60px #ffe600;
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<section id="intro">
+    <div class="intro-content">
+        <div style="font-size:70px;">🎁</div>
+
+        <h1>A Special Surprise<br>For Yousaf</h1>
+
+        <p style="font-size:18px;">
+            Something beautiful is waiting for you...
+        </p>
+
+        <button class="start-btn" onclick="startExperience()">
+            ENTER THE EXPERIENCE ✨
+        </button>
+    </div>
+</section>
+
+
+<!-- MAIN WEBSITE -->
+<main id="main">
+
+    <div class="badge">A MILLION-DOLLAR WISH ✨</div>
+
+    <h2>Happy Birthday<br>YOUSAF 🎂</h2>
+
+    <p class="subtitle">
+        Today isn't just another day...
+        it's YOUR day. 👑
+    </p>
+
+    <div class="card">
+
+        <div class="cake">🎂</div>
+
+        <h3>Dear Yousaf ❤️</h3>
+
+        <p class="wish">
+            May your life be filled with unforgettable moments,
+            genuine happiness, beautiful memories and incredible
+            adventures.
+            <br><br>
+            May every new year of your life bring you closer
+            to your dreams. 🌟
+        </p>
+
+        <button class="surprise-btn" onclick="showSurprise()">
+            🎁 OPEN YOUR SURPRISE
+        </button>
+
+        <div id="surprise">
+
+            <p class="secret">
+                ✨ SURPRISE! ✨
+                <br><br>
+
+                Yousaf, may you always have a reason to smile,
+                someone to make you laugh,
+                and dreams exciting enough to chase. ❤️
+
+                <br><br>
+
+                Your best chapters are still waiting to be written. 🚀
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- WISH CARDS -->
+    <h3 style="font-size:35px;">Your Birthday Wishes 🌟</h3>
+
+    <section class="wishes">
+
+        <div class="wish-card">
+            <div class="emoji">❤️</div>
+            <h3>Happiness</h3>
+            <p>
+                May happiness follow you everywhere you go.
+            </p>
+        </div>
+
+        <div class="wish-card">
+            <div class="emoji">🚀</div>
+            <h3>Success</h3>
+            <p>
+                May every dream you chase bring you closer to success.
+            </p>
+        </div>
+
+        <div class="wish-card">
+            <div class="emoji">🌎</div>
+            <h3>Adventure</h3>
+            <p>
+                May your life be full of amazing places and memories.
+            </p>
+        </div>
+
+        <div class="wish-card">
+            <div class="emoji">💎</div>
+            <h3>Greatness</h3>
+            <p>
+                May you discover how much greatness you are capable of.
+            </p>
+        </div>
+
+        <div class="wish-card">
+            <div class="emoji">😂</div>
+            <h3>Laughter</h3>
+            <p>
+                May you always have people around who make you smile.
+            </p>
+        </div>
+
+        <div class="wish-card">
+            <div class="emoji">🌟</div>
+            <h3>Dreams</h3>
+            <p>
+                May your biggest dreams become your reality.
+            </p>
+        </div>
+
+    </section>
+
+
+    <div class="card">
+
+        <h3>One Last Message 💌</h3>
+
+        <p class="wish">
+            Don't count the candles.
+            <br>
+            Count the memories.
+            <br>
+            Don't count the years.
+            <br>
+            Count the adventures.
+            <br><br>
+
+            And never forget...
+            <br>
+
+            <strong style="font-size:28px;color:#ffe600;">
+                YOU ARE ONE OF A KIND. 👑
+            </strong>
+        </p>
+
+        <div style="font-size:55px;">
+            🎉 🎂 🎈 ✨ 🥳
+        </div>
+
+    </div>
+
+    <footer>
+        Made with ❤️ specially for Yousaf
+    </footer>
+
+</main>
+
+
+<script>
+
+/* Start experience */
+function startExperience() {
+
+    document.getElementById("intro").style.opacity = "0";
+
+    setTimeout(() => {
+        document.getElementById("intro").style.display = "none";
+        document.getElementById("main").style.display = "block";
+
+        createStars();
+        fireworks();
+        confetti();
+    }, 1000);
+}
+
+
+/* Surprise button */
+function showSurprise() {
+
+    document.getElementById("surprise").style.display = "block";
+
+    fireworks();
+    confetti();
+
+    window.scrollTo({
+        top: document.getElementById("surprise").offsetTop - 100,
+        behavior: "smooth"
+    });
+}
+
+
+/* Stars */
+function createStars() {
+
+    for(let i = 0; i < 100; i++) {
+
+        let star = document.createElement("div");
+
+        star.className = "star";
+
+        star.style.left = Math.random() * 100 + "%";
+        star.style.top = Math.random() * 100 + "%";
+
+        star.style.animationDelay =
+            Math.random() * 2 + "s";
+
+        document.body.appendChild(star);
+    }
+}
+
+
+/* Confetti */
+function confetti() {
+
+    for(let i = 0; i < 120; i++) {
+
+        let piece = document.createElement("div");
+
+        piece.className = "confetti";
+
+        piece.style.left =
+            Math.random() * 100 + "%";
+
+        piece.style.background =
+            `hsl(${Math.random()*360},100%,60%)`;
+
+        piece.style.animationDuration =
+            (Math.random()*3 + 2) + "s";
+
+        piece.style.animationDelay =
+            Math.random() * 2 + "s";
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => {
+            piece.remove();
+        }, 6000);
+    }
+}
+
+
+/* Fireworks */
+function fireworks() {
+
+    for(let i = 0; i < 8; i++) {
+
+        setTimeout(() => {
+
+            let firework =
+                document.createElement("div");
+
+            firework.className = "firework";
+
+            firework.style.left =
+                (10 + Math.random()*80) + "%";
+
+            firework.style.top =
+                (10 + Math.random()*60) + "%";
+
+            document.body.appendChild(firework);
+
+            setTimeout(() => {
+                firework.remove();
+            }, 1200);
+
+        }, i * 300);
+    }
+}
+
+</script>
+
+</body>
+</html>
