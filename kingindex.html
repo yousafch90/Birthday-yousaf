@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Minahil 💗</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #09030d;
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* Background */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        radial-gradient(circle at 20% 20%, #ff4fa344, transparent 30%),
+        radial-gradient(circle at 80% 30%, #a855f744, transparent 30%),
+        radial-gradient(circle at 50% 90%, #ff149344, transparent 35%);
+}
+
+/* ENTRY SCREEN */
+#intro {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #08030d;
+    transition: opacity 1s ease;
+}
+
+.intro-box {
+    padding: 25px;
+}
+
+.crown {
+    font-size: 70px;
+    animation: float 2s infinite;
+}
+
+@keyframes float {
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.intro-box h1 {
+    font-size: clamp(45px, 12vw, 90px);
+    margin: 20px 0;
+
+    background: linear-gradient(
+        90deg,
+        #ff5fba,
+        white,
+        #c084fc,
+        #ff5fba
+    );
+
+    background-size: 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    animation: shine 4s infinite;
+}
+
+@keyframes shine {
+    to {
+        background-position: 300%;
+    }
+}
+
+.intro-box p {
+    color: #e9cce7;
+    font-size: 18px;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+.enter-btn,
+.main-btn {
+    padding: 16px 28px;
+    margin-top: 20px;
+    border-radius: 50px;
+    font-size: 17px;
+    background: linear-gradient(90deg, #ff3ca6, #9146ff);
+    box-shadow: 0 0 30px #ff3ca666;
+}
+
+.enter-btn:active,
+.main-btn:active {
+    transform: scale(.95);
+}
+
+/* MAIN */
+#main {
+    display: none;
+    padding: 60px 15px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 9px 18px;
+    border-radius: 50px;
+    border: 1px solid #ffffff30;
+    color: #ffc5eb;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.hero h2 {
+    font-size: clamp(50px, 14vw, 110px);
+
+    background: linear-gradient(
+        90deg,
+        #ff5fba,
+        white,
+        #c084fc
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    color: #d9bdd8;
+    font-size: 19px;
+}
+
+/* CARDS */
+.card {
+    max-width: 850px;
+    margin: 35px auto;
+    padding: 30px 20px;
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.15);
+
+    backdrop-filter: blur(15px);
+    box-shadow: 0 20px 70px #0008;
+}
+
+.card h3 {
+    color: #ffb5e5;
+    font-size: 29px;
+}
+
+.message {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #ead8e9;
+}
+
+/* COUNTDOWN */
+.countdown {
+    max-width: 650px;
+    margin: 25px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.time {
+    padding: 18px 5px;
+    border-radius: 18px;
+    background: #ffffff0b;
+    border: 1px solid #ffffff15;
+}
+
+.time b {
+    display: block;
+    font-size: 30px;
+    color: #ff9ddd;
+}
+
+.time span {
+    font-size: 11px;
+    color: #cdb7ca;
+}
+
+/* GIFT */
+.gift {
+    font-size: 100px;
+    cursor: pointer;
+    display: inline-block;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+.options {
+    display: none;
+    margin-top: 20px;
+}
+
+.option {
+    display: inline-block;
+    padding: 14px 18px;
+    margin: 6px;
+    border-radius: 20px;
+    background: #ff4fac20;
+    border: 1px solid #ff86ce55;
+    cursor: pointer;
+}
+
+/* SURPRISE */
+.surprise {
+    display: none;
+    margin-top: 25px;
+    padding: 22px;
+    border-radius: 22px;
+    background: #ff75c315;
+    border: 1px solid #ff75c340;
+}
+
+.surprise-text {
+    font-size: 21px;
+    line-height: 1.7;
+    color: #ffd9f1;
+}
+
+/* FLOATING HEARTS */
+.heart {
+    position: fixed;
+    bottom: -40px;
+    z-index: 10;
+    pointer-events: none;
+    animation: rise 6s linear forwards;
+}
+
+@keyframes rise {
+    to {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .countdown {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+        padding: 25px 17px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ENTRY -->
+<div id="intro">
+
+    <div class="intro-box">
+
+        <div class="crown">👑</div>
+
+        <h1>MINAHIL</h1>
+
+        <p>
+            A beautiful little surprise is waiting for you 💗
+        </p>
+
+        <button id="enterBtn" class="enter-btn">
+            ✨ ENTER YOUR SURPRISE ✨
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- MAIN WEBSITE -->
+<div id="main">
+
+    <div class="hero">
+
+        <div class="tag">
+            PRE-BIRTHDAY • 26 OCTOBER 🎀
+        </div>
+
+        <h2>MINAHIL 💗</h2>
+
+        <p>
+            Your special day is getting closer... ✨
+        </p>
+
+    </div>
+
+
+    <!-- MESSAGE -->
+    <div class="card">
+
+        <h3>Dear Minahil 🌷</h3>
+
+        <p class="message">
+
+            Okayyy pookie... 👀💗
+
+            <br><br>
+
+            Your birthday isn't here yet,
+            but we couldn't wait until
+            <strong>26 October!</strong> 🎂
+
+            <br><br>
+
+            So here's your little
+            <strong>PRE-BIRTHDAY SURPRISE.</strong> 🎀
+
+            <br><br>
+
+            May your new year be filled with
+            happiness, laughter, success,
+            beautiful memories and lots of
+            reasons to smile. ✨
+
+        </p>
+
+    </div>
+
+
+    <!-- COUNTDOWN -->
+    <div class="card">
+
+        <h3>⏳ Countdown To Your Birthday</h3>
+
+        <div class="countdown">
+
+            <div class="time">
+                <b id="days">00</b>
+                <span>DAYS</span>
+            </div>
+
+            <div class="time">
+                <b id="hours">00</b>
+                <span>HOURS</span>
+            </div>
+
+            <div class="time">
+                <b id="minutes">00</b>
+                <span>MINUTES</span>
+            </div>
+
+            <div class="time">
+                <b id="seconds">00</b>
+                <span>SECONDS</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- GIFT -->
+    <div class="card">
+
+        <h3>🎁 Important Question</h3>
+
+        <p class="message">
+
+            If someone wanted to buy you
+            a birthday gift...
+
+            <br><br>
+
+            <strong style="color:#ff9ddd;font-size:25px;">
+                WHAT DO YOU WANT? 👀
+            </strong>
+
+            <br><br>
+
+            Don't say "anything" 😂
+
+        </p>
+
+        <div id="gift" class="gift">
+            🎁
+        </div>
+
+        <div id="options" class="options">
+
+            <div class="option" data-answer="🎀 Something Cute">
+                🎀 Something Cute
+            </div>
+
+            <div class="option" data-answer="💎 Something Expensive">
+                💎 Something Expensive
+            </div>
+
+            <div class="option" data-answer="😭 A Surprise">
+                😭 A Surprise
+            </div>
+
+            <div class="option" data-answer="🍕 FOOD!">
+                🍕 FOOD!
+            </div>
+
+        </div>
+
+        <div id="giftResult" class="surprise"></div>
+
+    </div>
+
+
+    <!-- SECRET -->
+    <div class="card">
+
+        <h3>🔐 Secret Message</h3>
+
+        <p class="message">
+            There's something hidden here...
+        </p>
+
+        <button id="secretBtn" class="main-btn">
+            🔓 UNLOCK SECRET
+        </button>
+
+        <div id="secretBox" class="surprise">
+
+            <p class="surprise-text">
+
+                ✨ SECRET UNLOCKED ✨
+
+                <br><br>
+
+                Minahil, never forget how special you are.
+
+                <br><br>
+
+                Keep smiling.
+                Keep dreaming.
+                Keep being YOU. 💗
+
+                <br><br>
+
+                <strong>
+                    YOU ARE THE MAIN CHARACTER 👑
+                </strong>
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- TREAT -->
+    <div class="card">
+
+        <h3>🍰 ONE LAST QUESTION</h3>
+
+        <p class="message">
+
+            Okay, birthday girl...
+
+            <br><br>
+
+            <strong style="font-size:27px;color:#ff8fd5;">
+                WHEN ARE YOU GIVING THE TREAT? 😂
+            </strong>
+
+        </p>
+
+        <button id="treatBtn" class="main-btn">
+            🍰 ASK AGAIN
+        </button>
+
+        <div id="treatBox" class="surprise"></div>
+
+    </div>
+
+
+    <!-- FINAL -->
+    <div class="card">
+
+        <h3>🌟 Final Wish</h3>
+
+        <p class="message">
+
+            May 26 October bring you
+            the biggest smile.
+
+            <br><br>
+
+            May your new year bring
+            beautiful opportunities.
+
+            <br><br>
+
+            May you collect memories
+            you'll never forget.
+
+            <br><br>
+
+            And may every wish you make
+            find its way to you. 💗
+
+            <br><br>
+
+            <strong style="font-size:27px;color:#ffb0e5;">
+                HAPPY PRE-BIRTHDAY, MINAHIL! 🎂👑
+            </strong>
+
+            <br><br>
+
+            🎀 💗 ✨ 🎂 🥳 ✨ 💗 🎀
+
+        </p>
+
+    </div>
+
+
+    <p style="color:#806d7f;margin:60px 0 30px;">
+        Made with 💗 specially for Minahil
+    </p>
+
+</div>
+
+
+<script>
+
+/* =========================
+   ENTER BUTTON
+========================= */
+
+document.getElementById("enterBtn").addEventListener("click", function () {
+
+    var intro = document.getElementById("intro");
+    var main = document.getElementById("main");
+
+    intro.style.opacity = "0";
+
+    setTimeout(function () {
+        intro.style.display = "none";
+        main.style.display = "block";
+
+        startHearts();
+
+        window.scrollTo(0, 0);
+
+    }, 1000);
+
+});
+
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+function updateCountdown() {
+
+    var now = new Date();
+
+    var year = now.getFullYear();
+
+    var birthday = new Date(year, 9, 26);
+
+    if (now > birthday) {
+        birthday = new Date(year + 1, 9, 26);
+    }
+
+    var difference = birthday - now;
+
+    var days = Math.floor(
+        difference / (1000 * 60 * 60 * 24)
+    );
+
+    var hours = Math.floor(
+        (difference / (1000 * 60 * 60)) % 24
+    );
+
+    var minutes = Math.floor(
+        (difference / (1000 * 60)) % 60
+    );
+
+    var seconds = Math.floor(
+        (difference / 1000) % 60
+    );
+
+    document.getElementById("days").textContent = days;
+    document.getElementById("hours").textContent = hours;
+    document.getElementById("minutes").textContent = minutes;
+    document.getElementById("seconds").textContent = seconds;
+
+}
+
+updateCountdown();
+
+setInterval(updateCountdown, 1000);
+
+
+/* =========================
+   GIFT BUTTON
+========================= */
+
+document.getElementById("gift").addEventListener("click", function () {
+
+    document.getElementById("options").style.display = "block";
+
+});
+
+
+/* =========================
+   GIFT OPTIONS
+========================= */
+
+var giftOptions = document.querySelectorAll(".option");
+
+giftOptions.forEach(function (option) {
+
+    option.addEventListener("click", function () {
+
+        var answer = this.getAttribute("data-answer");
+
+        var result = document.getElementById("giftResult");
+
+        result.style.display = "block";
+
+        result.innerHTML =
+            "<p class='surprise-text'>" +
+            "👀 OHHH... interesting choice!" +
+            "<br><br>" +
+            "<strong>" + answer + "</strong>" +
+            "<br><br>" +
+            "Your request has officially been received. 😂💗" +
+            "</p>";
+
+        makeConfetti();
+
+    });
+
+});
+
+
+/* =========================
+   SECRET BUTTON
+========================= */
+
+document.getElementById("secretBtn").addEventListener("click", function () {
+
+    document.getElementById("secretBox").style.display = "block";
+
+    makeConfetti();
+
+});
+
+
+/* =========================
+   TREAT BUTTON
+========================= */
+
+document.getElementById("treatBtn").addEventListener("click", function () {
+
+    var box = document.getElementById("treatBox");
+
+    box.style.display = "block";
+
+    box.innerHTML =
+        "<p class='surprise-text'>" +
+        "😂😂 WE ARE STILL WAITING..." +
+        "<br><br>" +
+        "<strong>MINAHIL, WHEN IS THE TREAT?!</strong>" +
+        "<br><br>" +
+        "🍰 🍕 🍟 🧁" +
+        "</p>";
+
+    makeConfetti();
+
+});
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+function startHearts() {
+
+    setInterval(function () {
+
+        var heart = document.createElement("div");
+
+        heart.className = "heart";
+
+        var emojis = [
+            "💗",
+            "💕",
+            "💖",
+            "💓",
+            "🎀",
+            "✨"
+        ];
+
+        heart.textContent =
+            emojis[Math.floor(Math.random() * emojis.length)];
+
+        heart.style.left =
+            Math.random() * 100 + "%";
+
+        heart.style.fontSize =
+            (15 + Math.random() * 25) + "px";
+
+        heart.style.animationDuration =
+            (4 + Math.random() * 4) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(function () {
+            heart.remove();
+        }, 8000);
+
+    }, 600);
+
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+function makeConfetti() {
+
+    for (var i = 0; i < 80; i++) {
+
+        var piece = document.createElement("div");
+
+        piece.style.position = "fixed";
+        piece.style.top = "-20px";
+        piece.style.left =
+            Math.random() * 100 + "%";
+
+        piece.style.width = "9px";
+        piece.style.height = "15px";
+
+        piece.style.zIndex = "9999";
+
+        piece.style.background =
+            "hsl(" +
+            Math.random() * 360 +
+            ", 100%, 70%)";
+
+        piece.style.transform =
+            "rotate(" +
+            Math.random() * 360 +
+            "deg)";
+
+        piece.style.transition =
+            "transform 3s linear, top 3s linear";
+
+        document.body.appendChild(piece);
+
+        setTimeout(function () {
+
+            piece.style.top = "110vh";
+            piece.style.transform =
+                "rotate(720deg)";
+
+        }, 50);
+
+        setTimeout(function () {
+            piece.remove();
+        }, 3500);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
